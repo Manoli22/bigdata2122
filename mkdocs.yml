@@ -1,0 +1,52 @@
+site_name: Big Data
+site_url:  https://Manoli22.github.io/bigdata2122/
+use_directory_urls: false
+
+nav:
+  - "Inicio": "index.md"
+  - "1.- Big Data": "apuntes01.md"
+  - "2.- Proceso": "apuntes02.md"
+
+theme:
+  language: es
+  favicon: imagenes/favicon.png
+  name: "material"
+  palette:
+    primary: light blue
+    accent: "Teal"
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: "imagenes/logofp.png"
+  features:
+    - header.autohide
+
+extra:
+  search:
+    language: "es"
+  social:
+    - icon: fontawesome/solid/envelope-square
+      link: mailto:<iborra_mancam@gva.es>
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.details
+  - pymdownx.highlight:
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.superfences
+  - footnotes
+  - meta
+  - sane_lists
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+copyright: 2021-2022 Manoli Iborra - Licencia CC BY-NC-SA
