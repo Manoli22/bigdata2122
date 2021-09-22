@@ -1,11 +1,13 @@
-site_name: Big Data
-site_url:  https://Manoli22.github.io/bigdata2122/
+site_name: BIG DATA
+site_url:  https://manoli-iborra.github.io/bigdata2122/
 use_directory_urls: false
 
 nav:
-  - "Inicio": "index.md"
-  - "1.- Big Data": "apuntes01.md"
-  - "2.- Proceso": "apuntes02.md"
+  - "1. INTRODUCCIÓN": "index.md"
+  - "2.- BIG DATA": "apuntes01.md"
+  - "3.- PERFILES": "apuntes02.md"
+  - "4.- TIPOS DE DATOS": "apuntes03.md"
+  - "5.- FORMATO DE DATOS": "apuntes04.md"
 
 theme:
   language: es

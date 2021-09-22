@@ -1,0 +1,11 @@
+#FORMATO DE DATOS
+
+##CSV
+
+##TSV
+
+##XLS
+
+##JSON
+
+##XML
