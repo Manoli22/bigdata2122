@@ -1,0 +1,957 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/bigdata2223/apuntes14.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>6. DATA WAREHOUSE - BIG DATA</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DSTGE8QTPP"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-DSTGE8QTPP",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DSTGE8QTPP"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-warehouse" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="BIG DATA" class="md-header__button md-logo" aria-label="BIG DATA" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIG DATA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. DATA WAREHOUSE
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="BIG DATA" class="md-nav__button md-logo" aria-label="BIG DATA" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    BIG DATA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        1. INTRODUCCIÓN
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        2. BIG DATA
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="2. BIG DATA" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          2. BIG DATA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes01.html" class="md-nav__link">
+        2.0. BIG DATA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes02.html" class="md-nav__link">
+        2.1. PERFILES
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes03.html" class="md-nav__link">
+        2.2. TIPOS DE DATOS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes04.html" class="md-nav__link">
+        2.3. FORMATO DE DATOS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes05.html" class="md-nav__link">
+        2.4. RESUMEN
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        3. VISUALIZACIÓN DE DATOS
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3. VISUALIZACIÓN DE DATOS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          3. VISUALIZACIÓN DE DATOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes06.html" class="md-nav__link">
+        3.1. INTRODUCCIÓN
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes08.html" class="md-nav__link">
+        3.2. VISUALIZACIÓN DE DATOS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes07.html" class="md-nav__link">
+        3.3. ANÁLISIS EXPLORATORIO DE DATOS
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        4. PYTHON
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="4. PYTHON" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          4. PYTHON
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes009.html" class="md-nav__link">
+        4.1. GOOGLE COLABORATORY
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes09.html" class="md-nav__link">
+        4.2. PANDAS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes10.html" class="md-nav__link">
+        4.2.1. ACCESO A FICHEROS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes11.html" class="md-nav__link">
+        4.2.2. CREAR DATAFRAMES
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes12.html" class="md-nav__link">
+        4.2.3. OTRAS OPERACIONES
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apuntes13.html" class="md-nav__link">
+        5. LIMPIEZA DE DATOS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          6. DATA WAREHOUSE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="apuntes14.html" class="md-nav__link md-nav__link--active">
+        6. DATA WAREHOUSE
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-warehouse" class="md-nav__link">
+    Data Warehouse
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Warehouse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-de-los-data-warehouse" class="md-nav__link">
+    Características de los Data Warehouse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacion-modelo-transaccional-y-analitico" class="md-nav__link">
+    Comparación modelo transaccional y analítico
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-mart" class="md-nav__link">
+    Data Mart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-mart-vs-data-warehouse" class="md-nav__link">
+    Data Mart VS Data Warehouse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    ETL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodologias" class="md-nav__link">
+    Metodologías
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelado" class="md-nav__link">
+    Modelado
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelado-dimensional" class="md-nav__link">
+    Modelado Dimensional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablas-de-hechos" class="md-nav__link">
+    Tablas de Hechos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablas-de-dimensiones" class="md-nav__link">
+    Tablas de Dimensiones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnica-de-modelado-dimensional" class="md-nav__link">
+    Técnica de modelado dimensional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cubos-olap" class="md-nav__link">
+    Cubos OLAP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-warehouse" class="md-nav__link">
+    Data Warehouse
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Warehouse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-de-los-data-warehouse" class="md-nav__link">
+    Características de los Data Warehouse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacion-modelo-transaccional-y-analitico" class="md-nav__link">
+    Comparación modelo transaccional y analítico
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-mart" class="md-nav__link">
+    Data Mart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-mart-vs-data-warehouse" class="md-nav__link">
+    Data Mart VS Data Warehouse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    ETL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodologias" class="md-nav__link">
+    Metodologías
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelado" class="md-nav__link">
+    Modelado
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelado-dimensional" class="md-nav__link">
+    Modelado Dimensional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablas-de-hechos" class="md-nav__link">
+    Tablas de Hechos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablas-de-dimensiones" class="md-nav__link">
+    Tablas de Dimensiones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnica-de-modelado-dimensional" class="md-nav__link">
+    Técnica de modelado dimensional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cubos-olap" class="md-nav__link">
+    Cubos OLAP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>6. DATA WAREHOUSE</h1>
+                
+                <h2 id="data-warehouse"><strong>Data Warehouse</strong><a class="headerlink" href="#data-warehouse" title="Permanent link">&para;</a></h2>
+<p><img alt="imagen" src="imagenes/warehouse.png" /></p>
+<ul>
+<li>Es una gran base de datos, normalmente medida en gigabytes o terabytes.</li>
+<li>Es un proceso para recopilar y administrar datos de diversas fuentes para proporcionar información empresarial significativa (data warehousing).</li>
+<li>Conecta y analiza datos comerciales de fuentes heterogéneas.</li>
+<li>Es el núcleo del sistema de Business Intelligence que está diseñado para el análisis y generación de informes de datos.</li>
+<li>Es un proceso de transformar datos en información y ponerlos a disposición de los usuarios. </li>
+<li>Contiene datos de calidad como datos de clientes, empleados o ventas.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/warehouse2.png" /></p>
+<h3 id="caracteristicas-de-los-data-warehouse"><strong> Características de los Data Warehouse </strong><a class="headerlink" href="#caracteristicas-de-los-data-warehouse" title="Permanent link">&para;</a></h3>
+<p><img alt="imagen" src="imagenes/Caracteristicas.PNG" /></p>
+<h3 id="comparacion-modelo-transaccional-y-analitico"><strong> Comparación modelo transaccional y analítico </strong><a class="headerlink" href="#comparacion-modelo-transaccional-y-analitico" title="Permanent link">&para;</a></h3>
+<p><img alt="imagen" src="imagenes/transaccionalyanalitica.PNG" /></p>
+<h3 id="data-mart"><strong> Data Mart </strong><a class="headerlink" href="#data-mart" title="Permanent link">&para;</a></h3>
+<p>Según Kimball, “Un Data Mart es un conjunto de datos flexible, idealmente basado en el nivel de granularidad mayor que sea posible, presentado en un modelo dimensional que es capaz de comportarse bien ante cualquier consulta del usuario. En su definición más sencilla, un data mart representa un único proceso de negocio.”</p>
+<p>Un proceso de negocio es un conjunto de tareas relacionadas lógicamente, llevadas a cabo para lograr un resultado de negocio definido.</p>
+<h3 id="data-mart-vs-data-warehouse"><strong> Data Mart VS Data Warehouse </strong><a class="headerlink" href="#data-mart-vs-data-warehouse" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>La única diferencia es en cuanto al alcance.</p>
+</li>
+<li>
+<p>Un Data Warehouse es un sistema centralizado con datos globales de la empresa y de todos sus procesos operacionales mientras que un Data Mart es un subconjunto temático de datos, orientado a un proceso o un área de negocio específica. Por ejemplo, a pedidos de clientes, a compras, a inventario de almacén, etc.</p>
+</li>
+<li>
+<p>La existencia de un Data Warehouse no descarta la existencia de Data Marts ni viceversa. Es decir, puede haber organizaciones que tengan sólo un Data Warehouse, que sólo tengan Data Marts, o que tengan un Data Warehouse y Data Marts.</p>
+</li>
+</ul>
+<h3 id="etl"><strong> ETL</strong><a class="headerlink" href="#etl" title="Permanent link">&para;</a></h3>
+<p>En muchas ocasiones, la información no pasa directamente de las fuentes al Data Mart o Data Warehouse, sino que lo hace a través de unas bases de datos intermedias, que son necesarias dada la complejidad y disparidad de las fuentes. </p>
+<p>Los datos, antes de entrar en el Data Mart o Data Warehouse, se almacenan en un área de staging y/o un ODS (Operational Data Store).</p>
+<p><img alt="imagen" src="imagenes/etlarea.PNG" /></p>
+<p>Un <strong>área de staging</strong> es un área temporal que se encuentra en el flujo de datos entre las fuentes y el Data Mart o Data Warehouse con el fin de facilitar la extracción de datos, de realizar tareas de limpieza (data cleasing) o de mejorar la calidad de los datos.</p>
+<p>Un <strong>ODS</strong> es un área que va a dar soporte a los sistemas transaccionales, desde los que se alimenta con una periodicidad muy baja, y sirve como base de datos de consulta, a la que se conectarn herramientas de <em>reporting</em> con el fin de que el sistema transaccional tenga una menor carga de trabajo.</p>
+<h3 id="metodologias"><strong> Metodologías </strong><a class="headerlink" href="#metodologias" title="Permanent link">&para;</a></h3>
+<p>Existen muchas metodologías de diseño y construcción de un Data Warehouse. Cada fabricante de software de inteligencia de negocios busca imponer una metodología con sus productos. Sin embargo, se imponen entre la mayoría dos metodologías, la de Kimball y la de Inmon.</p>
+<ul>
+<li><strong>Metodología Kimball</strong>: Ralph Kimball sigue una metodología bottom-up y una estructura desnormalizada. Se define el diseño en detalle de partes individuales para luego enlazarlas entre ellas para formar un sistema completo. Es decir, con la metodología de Kimball se van diseñando a medida, según las necesidades de los departamentos, los diferentes Data Marts, para unirlos y formar el Data Warehouse de la empresa.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/kimball.PNG" /></p>
+<ul>
+<li><strong>Metodología Inmon</strong>:se caracteriza por tener un repositorio central de datos único. Se basa en la metodología top-down, que es aquella que toma decisiones partiendo de las variables más globales para ir descendiendo hasta las más específicas. Es decir, Inmon parte de un almacén de datos global del que se irán nutriendo los diferentes Data Marts, evitando así las diferentes inconsistencias que puedan existir entre diferentes departamentos.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/inmon.PNG" /></p>
+<ul>
+<li><strong>Alternativa: Data Vault</strong>: es una técnica híbrida entre el modelo normalizado y el modelo dimensional donde se toman lo mejor de cada una y se solucionan sus defectos. La definición que da Dan Listedt es la siguiente:</li>
+</ul>
+<p>“Data Vault es un conjunto de tablas normalizadas orientadas al detalle, con seguimiento histórico y vinculadas de forma única, que dan soporte a una o más áreas funcionales del negocio. Se trata de un enfoque híbrido que engloba lo mejor de la tercera forma normal (3NF) y el esquema en estrella. El diseño es flexible, escalable, consistente y adaptable a las necesidades de la empresa. Se trata de un modelo de datos diseñado específicamente para satisfacer las necesidades de los almacenes de datos empresariales actuales.”</p>
+<p>Comparativa entre Inmon y Kimball:</p>
+<p><img alt="imagen" src="imagenes/comparativaKI.PNG" /></p>
+<h3 id="modelado"><strong> Modelado </strong><a class="headerlink" href="#modelado" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Esquema en estrella (star schema)</strong>: hay una única tabla central, la tabla de hechos, que contiene todas las medidas y una tabla adicional por cada una de las perspectivas desde las que queremos analizar dicha información, es decir por cada una de las dimensiones.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/esquemaestrella.png" /></p>
+<ul>
+<li><strong>Esquema en copo de nieve (snowflake schema)</strong>. La diferencia es que algunas dimensiones no están relacionadas directamente con la tabla de hechos, sino que se relacionan con ella a través de otras dimensiones. También tenemos una tabla de hechos, situada en el centro, que contiene todas las medidas y una o varias tablas adicionales, con un mayor nivel de normalización.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/esquemacopo.png" /></p>
+<ul>
+<li><strong>Esquema híbrido</strong>. Tiene parte en estrella y parte en copo de nieve.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/hibrido.png" /></p>
+<h3 id="modelado-dimensional"><strong> Modelado Dimensional </strong><a class="headerlink" href="#modelado-dimensional" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Utilizado en la mayoría de las soluciones de BI.</li>
+<li>Es una mezcla de normalización y desnormalización, llamada Normalización Dimensional.</li>
+<li>Se utiliza tanto en el diseño de Data Marts como de Data Warehouses.</li>
+<li>
+<p>Hay dos tipos de tablas:</p>
+<ul>
+<li>
+<p>Tablas de Dimensión (Dimension Tables)</p>
+</li>
+<li>
+<p>Tablas de Hechos (Fact Tables)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tablas-de-hechos"><strong> Tablas de Hechos </strong><a class="headerlink" href="#tablas-de-hechos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Son tablas que representan detalles del proceso de negocio a analizar, por ejemplo, las ventas, las compras, las incidencias recibidas, los pagos, los apuntes contables, los clics sobre nuestro sitio web, etc.</p>
+</li>
+<li>
+<p>Contienen datos numéricos y medidas (métricas).</p>
+</li>
+<li>
+<p>Contienen también elementos (claves externas) para contextualizar dichas medidas, como por ejemplo el producto, la fecha, el cliente, la cuenta contable, etc.</p>
+</li>
+</ul>
+<p>Elementos que las componen:</p>
+<p><strong>Clave principal</strong>: identifica de forma única cada fila.</p>
+<p><strong>Claves externas</strong>: apuntan hacia las claves principales de cada una de las dimensiones que tienen relación con dicha tabla de hechos.</p>
+<p><strong>Medidas</strong>: representan columnas que contienen datos cuantificables, numéricos, que se pueden agregar como por ejemplo, cantidad, importe, precio, margen, etc.
+Metadatos y linaje: permite obtener información adicional sobre la fila, por ejemplo, que día se incorporó al Data Warehouse, de qué origen proviene, etc.</p>
+<h3 id="tablas-de-dimensiones"><strong> Tablas de Dimensiones </strong><a class="headerlink" href="#tablas-de-dimensiones" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Las tablas de dimensiones almacenan una serie de atributos o características, por las cuales podemos agrupar, rebanar o filtrar información.</li>
+<li>Nos permiten contextualizar los hechos, agregando diferentes perspectivas de análisis.</li>
+<li>Algunas veces los atributos están organizados en jerarquías que permiten analizar los datos de forma agrupada. Por ejemplo, en una dimensión Producto podemos encontrar una jerarquía formada por los atributos Categoría, Subcategoría y Producto.</li>
+<li>Tienen una clave principal diferente que se conoce con el nombre de clave subrogada.</li>
+<li><strong>Clave subrogada</strong> es un identificador único que es asignado a cada fila de la tabla de dimensiones, en definitiva, será su clave principal.</li>
+<li><strong>Clave de negocio</strong> es una clave que actúa como primary key en nuestro origen de datos y es con la que el usuario está familiarizado, pero no puede ser clave principal en nuestra tabla de dimensiones porque se podrían producir duplicidades.</li>
+</ul>
+<h3 id="tecnica-de-modelado-dimensional"><strong> Técnica de modelado dimensional </strong><a class="headerlink" href="#tecnica-de-modelado-dimensional" title="Permanent link">&para;</a></h3>
+<p>En el libro “The datawarehouse toolkit” de Ralph Kimball, ofrece una técnica de modelado 
+que consiste en 4 pasos:</p>
+<ol>
+<li>
+<p><strong>Seleccionar el proceso</strong>: El primer paso sería seleccionar el proceso a modelar. ¿En qué actividades del negocio nos interesa focalizar? Los modelos de negocio son simplificaciones de la realidad que nos sirven para comprender qué está sucediendo. Si está bien definido nos permitirá responder preguntas claves de la organización.
+El o los procesos a modelar se definen de acuerdo al objetivo. Seguramente queramos modelar más de un proceso, cada uno con su tabla de hechos y dimensiones, y cada uno de ellos con sus propios objetivos e indicadores de gestión.</p>
+</li>
+<li>
+<p><strong>Establecer el nivel de granularidad</strong>: Una vez identificado el proceso, tenemos que conocer qué información disponemos para 
+analizarlo, definir el nivel de detalle que vamos a registrar en la tabla de hechos. 
+Por ejemplo podemos definir las ventas en por mes, por producto, o bien las ventas por día 
+por vendedor. Hay que tener en cuenta que si se define un grano más grueso (por ejemplo, ventas por 
+mes), no podrá luego consultarse las ventas por día. Por eso se recomienda utilizar una granularidad más fina, de manera de poder responder a consultas con mayor nivel de detalle.</p>
+</li>
+<li>
+<p><strong>Identificar las dimensiones</strong>: Definida la granularidad, se enumeran las dimensiones asociadas. Las más comunes son, 
+tiempos, lugar, responsable, sector, etc. Es muy importante nombrar las dimensiones de manera que sean simples de identificar, 
+como también así sus atributos.</p>
+</li>
+<li>
+<p><strong>Identificar los hechos</strong>: Los hechos son los valores numéricos asociados al proceso que queremos medir. Por ejemplo en un proceso de compras, serán la cantidad vendida y el valor unitario. En un proceso de atención de reclamos podría ser el tiempo en segundos que demoró en 
+ser atendido, el tiempo en segundos que tomó la atención, etc.</p>
+</li>
+</ol>
+<h3 id="cubos-olap"><strong> Cubos OLAP </strong><a class="headerlink" href="#cubos-olap" title="Permanent link">&para;</a></h3>
+<p>El data warehouse define su estructura de datos basándose en un modelo de datos multidimensional.</p>
+<p>El modelo de datos multidimensional es una representación "conceptual" de los datos a tratar en forma de cubos. El cubo nos permite modelar los datos y visualizarlos en múltiples dimensiones.</p>
+<p><img alt="imagen" src="imagenes/cubo.PNG" /></p>
+<p><img alt="imagen" src="imagenes/olap1.png" /></p>
+<p><img alt="imagen" src="imagenes/olap2.png" /></p>
+<p>Roll up (drill-up): resumir los datos, es decir, subir en la jerarquía o reducir las dimensiones.</p>
+<p><img alt="imagen" src="imagenes/olap3.png" /></p>
+<p>Drill down (roll down): es bajar en la jerarquía o introducir nuevas dimensione.</p>
+<p><img alt="imagen" src="imagenes/olap4.png" /></p>
+<p><img alt="imagen" src="imagenes/olap5.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="apuntes13.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5. LIMPIEZA DE DATOS" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              5. LIMPIEZA DE DATOS
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2021-2022 Manoli Iborra - Licencia CC BY-NC-SA
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.expand"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
