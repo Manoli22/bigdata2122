@@ -769,15 +769,15 @@
 <p>Los datos, antes de entrar en el Data Mart o Data Warehouse, se almacenan en un área de staging y/o un ODS (Operational Data Store).</p>
 <p><img alt="imagen" src="imagenes/etlarea.PNG" /></p>
 <p>Un <strong>área de staging</strong> es un área temporal que se encuentra en el flujo de datos entre las fuentes y el Data Mart o Data Warehouse con el fin de facilitar la extracción de datos, de realizar tareas de limpieza (data cleasing) o de mejorar la calidad de los datos.</p>
-<p>Un <strong>ODS</strong> es un área que va a dar soporte a los sistemas transaccionales, desde los que se alimenta con una periodicidad muy baja, y sirve como base de datos de consulta, a la que se conectarn herramientas de <em>reporting</em> con el fin de que el sistema transaccional tenga una menor carga de trabajo.</p>
+<p>Un <strong>ODS</strong> es un área que va a dar soporte a los sistemas transaccionales, desde los que se alimenta con una periodicidad muy baja, y sirve como base de datos de consulta, a la que se conectan herramientas de <em>reporting</em> con el fin de que el sistema transaccional tenga una menor carga de trabajo.</p>
 <h3 id="metodologias"><strong> Metodologías </strong><a class="headerlink" href="#metodologias" title="Permanent link">&para;</a></h3>
 <p>Existen muchas metodologías de diseño y construcción de un Data Warehouse. Cada fabricante de software de inteligencia de negocios busca imponer una metodología con sus productos. Sin embargo, se imponen entre la mayoría dos metodologías, la de Kimball y la de Inmon.</p>
 <ul>
-<li><strong>Metodología Kimball</strong>: Ralph Kimball sigue una metodología bottom-up y una estructura desnormalizada. Se define el diseño en detalle de partes individuales para luego enlazarlas entre ellas para formar un sistema completo. Es decir, con la metodología de Kimball se van diseñando a medida, según las necesidades de los departamentos, los diferentes Data Marts, para unirlos y formar el Data Warehouse de la empresa.</li>
+<li><strong>Metodología Kimball</strong>: Ralph Kimball sigue una metodología <strong><em>bottom-up</em></strong> y una estructura desnormalizada. Se define el diseño en detalle de partes individuales para luego enlazarlas entre ellas para formar un sistema completo. Es decir, con la metodología de Kimball se van diseñando a medida, según las necesidades de los departamentos, los diferentes Data Marts, para unirlos y formar el Data Warehouse de la empresa.</li>
 </ul>
 <p><img alt="imagen" src="imagenes/kimball.PNG" /></p>
 <ul>
-<li><strong>Metodología Inmon</strong>:se caracteriza por tener un repositorio central de datos único. Se basa en la metodología top-down, que es aquella que toma decisiones partiendo de las variables más globales para ir descendiendo hasta las más específicas. Es decir, Inmon parte de un almacén de datos global del que se irán nutriendo los diferentes Data Marts, evitando así las diferentes inconsistencias que puedan existir entre diferentes departamentos.</li>
+<li><strong>Metodología Inmon</strong>:se caracteriza por tener un repositorio central de datos único. Se basa en la metodología <strong><em>top-down</em></strong>, que es aquella que toma decisiones partiendo de las variables más globales para ir descendiendo hasta las más específicas. Es decir, Inmon parte de un almacén de datos global del que se irán nutriendo los diferentes Data Marts, evitando así las diferentes inconsistencias que puedan existir entre diferentes departamentos.</li>
 </ul>
 <p><img alt="imagen" src="imagenes/inmon.PNG" /></p>
 <ul>
