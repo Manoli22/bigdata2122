@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#limpieza-de-datos" class="md-skip">
+        <a href="#analisis-exploratorio-de-datos-eda-ii" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -341,7 +341,19 @@
   
     <li class="md-nav__item">
       <a href="apuntes07.html" class="md-nav__link">
-        3.3. ANÁLISIS EXPLORATORIO DE DATOS
+        3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apunt.md" class="md-nav__link">
+        3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
       </a>
     </li>
   
@@ -497,40 +509,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#limpieza-de-datos" class="md-nav__link">
-    Limpieza de datos
+  <a href="#analisis-exploratorio-de-datos-eda-ii" class="md-nav__link">
+    ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
   </a>
   
-    <nav class="md-nav" aria-label="Limpieza de datos">
+    <nav class="md-nav" aria-label="ANÁLISIS EXPLORATORIO DE DATOS (EDA) II">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exploracion" class="md-nav__link">
-    Exploración
+  <a href="#dimensionalidad" class="md-nav__link">
+    Dimensionalidad
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#eliminar-las-columnas-irrelevantes" class="md-nav__link">
-    Eliminar las columnas irrelevantes
+  <a href="#tecnicas-de-reduccion-de-dimensionalidad" class="md-nav__link">
+    Técnicas de reducción de dimensionalidad
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tipos-de-datos" class="md-nav__link">
-    Tipos de datos
+  <a href="#seleccion-de-caracteristicas" class="md-nav__link">
+    Selección de características
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tratar-con-los-datos-perdidos" class="md-nav__link">
-    Tratar con los datos perdidos
+  <a href="#extraccion-de-caracteristicas" class="md-nav__link">
+    Extracción de características
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-componentes-principales" class="md-nav__link">
+    Análisis de componentes principales
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis de componentes principales">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#reemplazar-usando-media-mediana-o-moda" class="md-nav__link">
@@ -580,84 +605,146 @@
                 
                   <h1>Apuntes15</h1>
                 
-                <h2 id="limpieza-de-datos"><strong>Limpieza de datos</strong><a class="headerlink" href="#limpieza-de-datos" title="Permanent link">&para;</a></h2>
-<p>La limpieza de datos (data cleaning o data scrubbing) consiste en el descubrimiento y corrección o eliminación de datos erróneos en una tabla, base de datos o dataframe.
-El proceso de limpieza de datos permite identificar datos incompletos, incorrectos, inexactos, no pertinentes, etc y luego substituir, modificar o eliminar estos <strong>datos sucios ("data duty")</strong>.</p>
-<p>Los datos de una fuente, a la hora de consumirlos suelen ser:</p>
-<ul>
-<li><strong>Inconsistentes</strong>: con información relevante y no relevante.</li>
-<li><strong>Imprecisos</strong>: contienen datos incorrectos, valores perdidos, etc.</li>
-<li><strong>Repetitivos</strong>: duplicidad de datos.</li>
-</ul>
-<h3 id="exploracion"><strong> Exploración </strong><a class="headerlink" href="#exploracion" title="Permanent link">&para;</a></h3>
-<p>Una vez que tenemos descargado el dataset, lo primero que hay que hacer es reconocer con qué nos estamos enfrentando. Para ello visualizamos el dataset.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div>
-También podemos visualizar desde abajo con tail.</p>
-<p>Para obtener datos rápidos de lo que hay dentro, utilizamos el método describe.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</code></pre></div>
-<p>La función describe nos muestra los datos relevantes para columnas que contengan números.</p>
-<p>Para obtener datos de columnas que contienen valores de otro tipo como por ejemplo cadenas, debemos agregar un parámetro para que tome en cuenta a todo el dataset y no solo a los valores numéricos.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>Las tres categorías que se incluyen son:</p>
-<ul>
-<li><code>unique</code>: cantidad de valores únicos.</li>
-<li><code>top</code>: valor único con más repeticiones.</li>
-<li><code>freq</code>: cantidad de veces que aparece el valor más repetido.</li>
-</ul>
-<h3 id="eliminar-las-columnas-irrelevantes"><strong> Eliminar las columnas irrelevantes </strong><a class="headerlink" href="#eliminar-las-columnas-irrelevantes" title="Permanent link">&para;</a></h3>
-<p>Las columnas que no sean interesantes para el desarrollo de nuestro problema las podemos eliminar.</p>
-<p>En nuestro ejemplo vamos a eliminar la columna nombre pero como luego nos va a hacer falta para continuar con los ejemplos, vamos a asignar el dataframe a df1 y sobre éste eliminamos el campo nombre.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df1</span><span class="o">=</span><span class="n">df</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="tipos-de-datos"><strong> Tipos de datos </strong><a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
-<p>Obtener los tipos de datos de las diferentes columnas para ver si son correctos.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
-</code></pre></div>
-Si comprobamos que hay algún tipo de dato erróneo podemos cambiarlo, por ejemplo el campo edad que es entero queremos cambiarlo a float:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;edad&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;edad&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
-</code></pre></div>
-<h3 id="tratar-con-los-datos-perdidos"><strong> Tratar con los datos perdidos </strong><a class="headerlink" href="#tratar-con-los-datos-perdidos" title="Permanent link">&para;</a></h3>
-<p>Otro paso en la limpieza de datos es averiguar si el dataset está completo o tiene datos perdidos.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">missing_data</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">missing_data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
-<span class="linenos" data-linenos="3 "></span>  <span class="nb">print</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
-<span class="linenos" data-linenos="4 "></span>  <span class="nb">print</span><span class="p">(</span><span class="n">missing_data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-<span class="linenos" data-linenos="5 "></span>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>Los valores perdidos los podemos reemplazar, para ello hay que averiguar qué tipo de dato es y cómo tratarlo.</p>
+                <h2 id="analisis-exploratorio-de-datos-eda-ii"><strong>ANÁLISIS EXPLORATORIO DE DATOS (EDA) II</strong><a class="headerlink" href="#analisis-exploratorio-de-datos-eda-ii" title="Permanent link">&para;</a></h2>
+<p>Disponer de grandes espacios de almacenamiento hace que se guarden muchísimas características de cada instancia. Es tentador almacenar más y más información así evitamos tomar decisiones sobre qué información realmente se necesita o se va a necesitar en el futuro.</p>
+<p><strong><em>Problema</em></strong>: puede ser perjudicial para el análisis de los datos y el desarrollo de modelos predictivos.</p>
+<p>Ejemplo:</p>
+<p>○ Tenemos 10.000 características sobre cada cliente de nuestra tienda virtual.</p>
+<p>○ Queremos predecir qué cliente comprará una nueva marca de comida para perros.</p>
+<p>○ La cantidad de características relevantes para esta tarea es probablemente muy pequeña.</p>
+<p>○ <strong>Mejor de los casos</strong>: muchos atributos irrelevantes provocarán una sobrecarga computacional innecesaria sobre cualquier algoritmo de minería de datos.</p>
+<p>○ <strong>Peor de los casos</strong>: estos atributos innecesarios introducen ruido y provocan que el algoritmo produzca malos resultados.</p>
+<h3 id="dimensionalidad"><strong> Dimensionalidad </strong><a class="headerlink" href="#dimensionalidad" title="Permanent link">&para;</a></h3>
+<p>● Dimensionalidad (dimensionality): número de características (columnas) que tienes en tu conjunto de datos.</p>
+<p>● Tenemos alta dimensionalidad (high dimensional) cuando nuestro conjunto de datos tiene más de 10 columnas.</p>
+<p>● Trabajar con un conjunto de datos más pequeños facilita tu vida como científico de datos.</p>
+<ol>
+<li>Menos complejidad hace que sea más fácil de interpretar por un humano.</li>
+<li>Menos requisitos de almacenamiento y capacidad/velocidad de cómputo.</li>
+<li>Mejor construcción de modelos descriptivos y predictivos.</li>
+</ol>
 <ul>
 <li>
-<p><code>Strings</code>: la mejor práctica es reemplazar el dato perdido por el que se repite con más frecuencia.</p>
+<p>Evita la maldición de la dimensionalidad (the curse of dimensionality).</p>
 </li>
 <li>
-<p><code>Integers</code>: el dato perdido debe reemplazarse por el promedio de su misma columna.</p>
+<p>Reduce el sobreajuste a los datos (overfitting).</p>
 </li>
 </ul>
-<p>En el caso de que sea <strong>strings</strong>:</p>
-<p>Primero comprobamos el valor que más se repite que vendrá indicado en la etiqueta <code>top</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">])</span>
-</code></pre></div>
-En el caso del ejemplo, como no hay ningún valor vacío en el campo nombre, vamos a eliminar el nombre de Rosa Díaz Díaz para luego poder reemplazarlo:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Rosa Díaz Díaz&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-Luego lo reemplazamos:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="s1">&#39;José Luis Martinez Izquierdo&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
-</code></pre></div>
-En el caso de que sea <strong>integer</strong>:</p>
-<p>Se obtiene la media:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">media</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;colesterol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="nb">print</span><span class="p">(</span><span class="n">media</span><span class="p">)</span>
-</code></pre></div>
-Reemplazamos el valor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;colesterol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
+<p><strong>La maldición de la dimensionalidad</strong></p>
+<p>○ Es preferible tener un conjunto de datos con muchas características que uno con pocas.</p>
+<p>○ Problema: los modelos se suelen sobreajustar (overfitting) cuando hay muchas dimensiones.</p>
+<p>○ Con muchas características necesitamos tener muchas instancias o habrán muchas combinaciones únicas de observaciones.</p>
+<p>○ El modelo acabará memorizando las muestras de entrenamiento en lugar de generalizar.</p>
+<p>○ Para evitar el sobreajuste el número de observaciones debería incrementarse exponencialmente con respecto al número de características.</p>
+<p>○ Esto es muy complicado para conjuntos de datos con muchas características.</p>
+<p>○ La solución es aplicar técnicas de reducción de la dimensionalidad.</p>
+<h3 id="tecnicas-de-reduccion-de-dimensionalidad"><strong> Técnicas de reducción de dimensionalidad </strong><a class="headerlink" href="#tecnicas-de-reduccion-de-dimensionalidad" title="Permanent link">&para;</a></h3>
+<p>La reducción de la dimensionalidad podemos llevarla a cabo por:</p>
+<ul>
+<li>Selección de características.</li>
+<li>Extracción de características.</li>
+</ul>
+<h3 id="seleccion-de-caracteristicas"><strong>Selección de características</strong><a class="headerlink" href="#seleccion-de-caracteristicas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Seleccionar solo las columnas que son importantes para el proceso de análisis en un conjunto de datos grandes.</li>
+<li>Problema: ¿qué características son importantes?</li>
+<li>Si eres un experto en el dominio lo sabrás fácilmente.</li>
+</ul>
+<p><img alt="imagen" src="imagenes/seleccionar1.PNG" /></p>
+<ul>
+<li>Selección por varianza:</li>
+</ul>
+<ol>
+<li>
+<p>Podemos eliminar columnas con poca varianza.</p>
+</li>
+<li>
+<p>La mayoría de valores son iguales y no nos permiten distinguir unas muestras de otras.</p>
+</li>
+<li>
+<p>Son poco útiles para el análisis y la construcción de modelos.</p>
+</li>
+</ol>
+<p><img alt="imagen" src="imagenes/seleccion2.PNG" /></p>
+<ul>
+<li>Selección por valores ausentes.</li>
+</ul>
+<p>○ Otra razón para eliminar una característica es que contenga muchos valores ausentes (NaN).</p>
+<p>○ Si no hay muchos valores ausentes, se puede aplicar imputación para completarlos.</p>
+<p><img alt="imagen" src="imagenes/seleccion3.PNG" /></p>
+<ul>
+<li>Selección mediante visualización.
+○ Ejemplo:</li>
+</ul>
+<p>■ Correlación perfecta (todos los puntos en la diagonal) entre weight_kg y weight_lb</p>
+<p>■ Ambas tienen la misma información y podemos eliminar una de ellas</p>
+<p><img alt="imagen" src="imagenes/seleccion4.PNG" /></p>
+<p>○ Si hay una característica numérica sin varianza (una constante) también se puede ver fácilmente de manera visual con la matriz de dispersión.</p>
+<p><img alt="imagen" src="imagenes/seleccion5.PNG" /></p>
+<ul>
+<li>Selección por correlación.</li>
+</ul>
+<p>○ La matriz de dispersión permite ver qué características están fuertemente correlacionadas.</p>
+<p>○ Podemos medir de manera precisa esa relación con medidas de correlación (ej. pearson).</p>
+<p>■ -1 correlación negativa perfecta, 0 sin correlación, 1 correlación positiva perfecta.</p>
+<p>○ Una correlación perfecta implica que si conoces una característica puedes predecir la otra perfectamente en ese conjunto de datos.</p>
+<p>○ Las características que están perfectamente correlacionadas no aportan información al conjunto de datos, pero añaden complejidad.</p>
+<p>○ Interesa eliminar una de las dos características que capturen la misma información.</p>
+<p>○ También se deberían eliminar aquellas cuya correlación se aproxime a 1 si están midiendo cosas similares.</p>
+<h3 id="extraccion-de-caracteristicas"><strong> Extracción de características </strong><a class="headerlink" href="#extraccion-de-caracteristicas" title="Permanent link">&para;</a></h3>
+<p>● La selección de características elimina completamente la característica y todos sus datos del conjunto.</p>
+<p>● La extracción de características (feature extraction) es una aproximación diferente, pero con el mismo objetivo de reducir la dimensionalidad.</p>
+<p>● En lugar de seleccionar un subconjunto de características, se calcularán o extraerán nuevas características a partir de las originales.</p>
+<p>● Problema: las nuevas características creadas son menos intuitivas y más difíciles de interpretar que las originales.</p>
+<p><img alt="imagen" src="imagenes/seleccion6.PNG" /></p>
+<p>● Permite reducir mucho los conjuntos de datos que tienen correlaciones fuertes entre las diferentes características.
+○ Ej: si digo que una persona tiene los pies grandes, las manos grandes y los brazos grandes, puedo resumir este dato diciendo que la persona es alta.</p>
+<p>● Cuando conoces bien los datos, puedes combinar las características originales en nuevas que dejen a las primeras obsoletas.
+○ Ej: en un conjunto de datos con el peso y altura de varias personas, podemos usar el índice de masa corporal (IMC) para combinar ambas en una y eliminar las anteriores.</p>
+<p>● Hay algoritmos para calcular estas nuevas características de manera que se pierda el mínimo posible de información.</p>
+<h2 id="analisis-de-componentes-principales"><strong> Análisis de componentes principales </strong><a class="headerlink" href="#analisis-de-componentes-principales" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Principal Component Analysis (PCA).</p>
+</li>
+<li>
+<p>Técnica para describir un conjunto de datos en términos de nuevas variables (componentes) no correlacionadas.</p>
+</li>
+<li>
+<p>Los componentes se ordenan por la cantidad de varianza original que describen, por lo que la técnica es útil para reducir la dimensionalidad.</p>
+</li>
+<li>
+<p>Se utiliza tanto para el análisis de datos exploratorio como para la construcción de modelos predictivos.</p>
+</li>
+<li>
+<p>Es importante escalar primero los valores para que las características sean fáciles de comparar.</p>
+</li>
+<li>
+<p>Si añadimos una nueva característica al dataset original habría que añadir también un nuevo componente principal si no queremos perder información.</p>
+</li>
+<li>
+<p>Podríamos tener 100 componentes principales para describir conjuntos de 100 características.</p>
+</li>
+</ul>
+<p>■ No tendría sentido porque los componentes principales son más difíciles de entender.</p>
+<ul>
+<li>Los componentes principales no contienen información duplicada y están ordenados de más a menos importante.</li>
+</ul>
+<p>■ En conjuntos de datos con mucha correlación, la mayoría de varianza se explica con los primeros componentes.
+■ El resto de componentes explican tan poca varianza que pueden ser eliminados.</p>
+<ul>
+<li>
+<p>Podemos decirle al algoritmo cuántos componentes queremos que calcule.</p>
+</li>
+<li>
+<p>También podemos decirle la proporción mínima de varianza que queremos mantener.</p>
+</li>
+</ul>
+<p>■ El algoritmo decidirá cuántos componentes debe mantener
+○ Problema: no hay nada que nos diga cuál es el número correcto de componentes a mantener.</p>
+<p>■ Depende de cuánta información estás dispuesto a sacrificar para reducir la complejidad.
+nooooooooooooooooo</p>
 <h3 id="reemplazar-usando-media-mediana-o-moda"><strong> Reemplazar usando Media, Mediana o Moda </strong><a class="headerlink" href="#reemplazar-usando-media-mediana-o-moda" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="2 "></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;colesterol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>

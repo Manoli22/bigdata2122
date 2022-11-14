@@ -16,7 +16,7 @@
     
     
       
-        <title>3.3. ANÁLISIS EXPLORATORIO DE DATOS - BIG DATA</title>
+        <title>3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I - BIG DATA</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.3. ANÁLISIS EXPLORATORIO DE DATOS
+              3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I
             
           </span>
         </div>
@@ -352,12 +352,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          3.3. ANÁLISIS EXPLORATORIO DE DATOS
+          3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="apuntes07.html" class="md-nav__link md-nav__link--active">
-        3.3. ANÁLISIS EXPLORATORIO DE DATOS
+        3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I
       </a>
       
         
@@ -395,10 +395,29 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejercicios-guiados" class="md-nav__link">
+    Ejercicios guiados
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apunt.md" class="md-nav__link">
+        3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
+      </a>
     </li>
   
 
@@ -575,6 +594,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejercicios-guiados" class="md-nav__link">
+    Ejercicios guiados
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -601,6 +627,7 @@
 <p>El proceso consiste en generar preguntas acerca de los datos y buscar respuestas visualizando, transformando y modelando los datos para así obtener resultados o generar nuevas preguntas. No es un proceso formal, no tiene reglas estrictas sino que es libre y no se rige por ninguna regla concreta.
 El objetivo durante el proceso EDA es desarrollar un entendimiento de los datos utilizando diferentes herramientas.
 El EDA es un proceso creativo que consiste en formular preguntas de calidad para poder revelar nuevos aspectos de los datos.</p>
+<p>El EDA es una pieza fundamental en los procesos de ciencia de datos. Siempre se espera que podamos realizar un análisis exploratorio antes de empezar a trabajar en un modelado. Muchas veces se habla de la regla del 80-20% en el que el 80% del trabajo de un Data Scientist debería estar dedicado a obtener y entender los datos, y un 20% a tareas de modelado y tunning de modelo.</p>
 <h2 id="tipos-de-analisis-exploratorio"><strong><em>Tipos de análisis exploratorio</em></strong><a class="headerlink" href="#tipos-de-analisis-exploratorio" title="Permanent link">&para;</a></h2>
 <p>Podemos distinguir dos tipos de análisis:</p>
 <p><strong>1. Estadístico:</strong> Media, mediana, moda, varianza,...</p>
@@ -642,8 +669,17 @@ Medida más común, aunque sensible a valores extremos.</p>
 <li>Se usa principalmente para datos categoriales.</li>
 </ul>
 <p><strong><em> * Coeficiente de asimetría (skewness)</em></strong></p>
+<p>Permite saber si el conjunto de datos sigue una distribución normal.</p>
 <ul>
-<li>Permite saber si el conjunto de datos sigue una distribución normal.</li>
+<li>
+<p>Si coef=0 la distribución es simétrica, es decir, existe la misma concentración de valores a la derecha y a la izquierda de la media.</p>
+</li>
+<li>
+<p>Si coef&gt;0 la distribución es asimétrica positiva, existe mayor concentración de valores a la derecha de la media que a su izquierda.</p>
+</li>
+<li>
+<p>Si coef&lt;0 la distribución es asimétrica negativa, existe mayor concentración de valores a la izquierda de la media que a su derecha.</p>
+</li>
 </ul>
 <p><img alt="imagen" src="imagenes/coeficiente.PNG" /></p>
 <h2 id="dispersion"><strong>Dispersión</strong><a class="headerlink" href="#dispersion" title="Permanent link">&para;</a></h2>
@@ -694,6 +730,12 @@ Medida más común, aunque sensible a valores extremos.</p>
 <li>Especialmente sensible a valores extremos (igual que la varianza).</li>
 </ul>
 <p><img alt="imagen" src="imagenes/estandar.PNG" /></p>
+<h2 id="ejercicios-guiados"><strong>Ejercicios guiados</strong><a class="headerlink" href="#ejercicios-guiados" title="Permanent link">&para;</a></h2>
+<p><a href=" https://colab.research.google.com/drive/12T6Qn9kGU7H-GosU3drGAIrWj2fWgqtZ?usp=sharing"> Práctica EDA </a></p>
+<p><a href="https://colab.research.google.com/drive/1-433kopqSr3pyaylisNzQxz-sHsDlB7d?usp=sharing"> Tendencia </a></p>
+<p><a href="https://colab.research.google.com/drive/1qVHKOi6q2szzwZsdx7B0NoWEInhldUG7?usp=sharing"> Dispersión </a></p>
+<p><a href="https://colab.research.google.com/drive/1dTw6yflb1maH3jQxCddwl7Cg9965NH6k?usp=sharing"> Correlación </a></p>
+<p><a href="https://colab.research.google.com/drive/1spM6r7VPt942blErUwSqvW1O33zwsPiu?usp=sharing"> Analizar datos cuantitativos </a></p>
                 
               
               
