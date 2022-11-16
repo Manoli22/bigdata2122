@@ -16,7 +16,7 @@
     
     
       
-        <title>Apuntes15 - BIG DATA</title>
+        <title>3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II - BIG DATA</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Apuntes15
+              3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
             
           </span>
         </div>
@@ -293,12 +293,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         3. VISUALIZACIÓN DE DATOS
@@ -350,11 +352,102 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="apunt.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="apuntes15.html" class="md-nav__link md-nav__link--active">
         3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-exploratorio-de-datos-eda-ii" class="md-nav__link">
+    ANÁLISIS EXPLORATORIO DE DATOS (EDA) II
+  </a>
+  
+    <nav class="md-nav" aria-label="ANÁLISIS EXPLORATORIO DE DATOS (EDA) II">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dimensionalidad" class="md-nav__link">
+    Dimensionalidad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-de-reduccion-de-dimensionalidad" class="md-nav__link">
+    Técnicas de reducción de dimensionalidad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccion-de-caracteristicas" class="md-nav__link">
+    Selección de características
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraccion-de-caracteristicas" class="md-nav__link">
+    Extracción de características
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-componentes-principales" class="md-nav__link">
+    Análisis de componentes principales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imputacion-y-outliers" class="md-nav__link">
+    Imputación y Outliers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-guiados" class="md-nav__link">
+    Ejercicios guiados:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -554,39 +647,19 @@
     Análisis de componentes principales
   </a>
   
-    <nav class="md-nav" aria-label="Análisis de componentes principales">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reemplazar-usando-media-mediana-o-moda" class="md-nav__link">
-    Reemplazar usando Media, Mediana o Moda
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imputacion-y-outliers" class="md-nav__link">
+    Imputación y Outliers
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#reemplazar-el-valor-de-las-filas-si-es-necesario" class="md-nav__link">
-    Reemplazar el valor de las filas si es necesario
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-guiados" class="md-nav__link">
+    Ejercicios guiados:
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#outliers" class="md-nav__link">
-    Outliers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#datos-categoricos" class="md-nav__link">
-    Datos categóricos
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -603,7 +676,7 @@
               
                 
                 
-                  <h1>Apuntes15</h1>
+                  <h1>3.4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) II</h1>
                 
                 <h2 id="analisis-exploratorio-de-datos-eda-ii"><strong>ANÁLISIS EXPLORATORIO DE DATOS (EDA) II</strong><a class="headerlink" href="#analisis-exploratorio-de-datos-eda-ii" title="Permanent link">&para;</a></h2>
 <p>Disponer de grandes espacios de almacenamiento hace que se guarden muchísimas características de cada instancia. Es tentador almacenar más y más información así evitamos tomar decisiones sobre qué información realmente se necesita o se va a necesitar en el futuro.</p>
@@ -621,16 +694,12 @@
 <ol>
 <li>Menos complejidad hace que sea más fácil de interpretar por un humano.</li>
 <li>Menos requisitos de almacenamiento y capacidad/velocidad de cómputo.</li>
-<li>Mejor construcción de modelos descriptivos y predictivos.</li>
+<li>
+<p>Mejor construcción de modelos descriptivos y predictivos.</p>
+<p>3.1. Evita la maldición de la dimensionalidad (the curse of dimensionality).</p>
+<p>3.2. Reduce el sobreajuste a los datos (overfitting).</p>
+</li>
 </ol>
-<ul>
-<li>
-<p>Evita la maldición de la dimensionalidad (the curse of dimensionality).</p>
-</li>
-<li>
-<p>Reduce el sobreajuste a los datos (overfitting).</p>
-</li>
-</ul>
 <p><strong>La maldición de la dimensionalidad</strong></p>
 <p>○ Es preferible tener un conjunto de datos con muchas características que uno con pocas.</p>
 <p>○ Problema: los modelos se suelen sobreajustar (overfitting) cuando hay muchas dimensiones.</p>
@@ -653,9 +722,9 @@
 </ul>
 <p><img alt="imagen" src="imagenes/seleccionar1.PNG" /></p>
 <ul>
-<li>Selección por varianza:</li>
-</ul>
-<ol>
+<li>
+<p><strong>Selección por varianza</strong>:</p>
+<ul>
 <li>
 <p>Podemos eliminar columnas con poca varianza.</p>
 </li>
@@ -665,44 +734,81 @@
 <li>
 <p>Son poco útiles para el análisis y la construcción de modelos.</p>
 </li>
-</ol>
+</ul>
+</li>
+</ul>
 <p><img alt="imagen" src="imagenes/seleccion2.PNG" /></p>
 <ul>
-<li>Selección por valores ausentes.</li>
+<li>
+<p><strong>Selección por valores ausentes</strong>:</p>
+<ul>
+<li>
+<p>Otra razón para eliminar una característica es que contenga muchos valores ausentes (NaN).</p>
+</li>
+<li>
+<p>Si no hay muchos valores ausentes, se puede aplicar imputación para completarlos.</p>
+</li>
 </ul>
-<p>○ Otra razón para eliminar una característica es que contenga muchos valores ausentes (NaN).</p>
-<p>○ Si no hay muchos valores ausentes, se puede aplicar imputación para completarlos.</p>
+</li>
+</ul>
 <p><img alt="imagen" src="imagenes/seleccion3.PNG" /></p>
 <ul>
-<li>Selección mediante visualización.
-○ Ejemplo:</li>
+<li>
+<p><strong>Selección mediante visualización</strong>:</p>
+<ul>
+<li>
+<p>Correlación perfecta (todos los puntos en la diagonal) entre weight_kg y weight_lb.</p>
+</li>
+<li>
+<p>Ambas tienen la misma información y podemos eliminar una de ellas.</p>
+</li>
 </ul>
-<p>■ Correlación perfecta (todos los puntos en la diagonal) entre weight_kg y weight_lb</p>
-<p>■ Ambas tienen la misma información y podemos eliminar una de ellas</p>
+</li>
+</ul>
 <p><img alt="imagen" src="imagenes/seleccion4.PNG" /></p>
-<p>○ Si hay una característica numérica sin varianza (una constante) también se puede ver fácilmente de manera visual con la matriz de dispersión.</p>
+<ul>
+<li>Si hay una característica numérica sin varianza (una constante) también se puede ver fácilmente de manera visual con la matriz de dispersión.</li>
+</ul>
 <p><img alt="imagen" src="imagenes/seleccion5.PNG" /></p>
 <ul>
-<li>Selección por correlación.</li>
+<li>
+<p><strong>Selección por correlación</strong>:</p>
+<ul>
+<li>
+<p>La matriz de dispersión permite ver qué características están fuertemente correlacionadas.</p>
+</li>
+<li>
+<p>Podemos medir de manera precisa esa relación con medidas de correlación (ej. pearson).</p>
+<ul>
+<li>-1 correlación negativa perfecta, 0 sin correlación, 1 correlación positiva perfecta.</li>
 </ul>
-<p>○ La matriz de dispersión permite ver qué características están fuertemente correlacionadas.</p>
-<p>○ Podemos medir de manera precisa esa relación con medidas de correlación (ej. pearson).</p>
-<p>■ -1 correlación negativa perfecta, 0 sin correlación, 1 correlación positiva perfecta.</p>
-<p>○ Una correlación perfecta implica que si conoces una característica puedes predecir la otra perfectamente en ese conjunto de datos.</p>
-<p>○ Las características que están perfectamente correlacionadas no aportan información al conjunto de datos, pero añaden complejidad.</p>
-<p>○ Interesa eliminar una de las dos características que capturen la misma información.</p>
-<p>○ También se deberían eliminar aquellas cuya correlación se aproxime a 1 si están midiendo cosas similares.</p>
+</li>
+<li>
+<p>Una correlación perfecta implica que si conoces una característica puedes predecir la otra perfectamente en ese conjunto de datos.</p>
+</li>
+<li>
+<p>Las características que están perfectamente correlacionadas no aportan información al conjunto de datos, pero añaden complejidad.</p>
+</li>
+<li>
+<p>Interesa eliminar una de las dos características que capturen la misma información.</p>
+</li>
+<li>
+<p>También se deberían eliminar aquellas cuya correlación se aproxime a 1 si están midiendo cosas similares.</p>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="extraccion-de-caracteristicas"><strong> Extracción de características </strong><a class="headerlink" href="#extraccion-de-caracteristicas" title="Permanent link">&para;</a></h3>
 <p>● La selección de características elimina completamente la característica y todos sus datos del conjunto.</p>
 <p>● La extracción de características (feature extraction) es una aproximación diferente, pero con el mismo objetivo de reducir la dimensionalidad.</p>
 <p>● En lugar de seleccionar un subconjunto de características, se calcularán o extraerán nuevas características a partir de las originales.</p>
 <p>● Problema: las nuevas características creadas son menos intuitivas y más difíciles de interpretar que las originales.</p>
 <p><img alt="imagen" src="imagenes/seleccion6.PNG" /></p>
-<p>● Permite reducir mucho los conjuntos de datos que tienen correlaciones fuertes entre las diferentes características.
-○ Ej: si digo que una persona tiene los pies grandes, las manos grandes y los brazos grandes, puedo resumir este dato diciendo que la persona es alta.</p>
-<p>● Cuando conoces bien los datos, puedes combinar las características originales en nuevas que dejen a las primeras obsoletas.
-○ Ej: en un conjunto de datos con el peso y altura de varias personas, podemos usar el índice de masa corporal (IMC) para combinar ambas en una y eliminar las anteriores.</p>
-<p>● Hay algoritmos para calcular estas nuevas características de manera que se pierda el mínimo posible de información.</p>
+<p>● Permite reducir mucho los conjuntos de datos que tienen correlaciones fuertes entre las diferentes características.</p>
+<p>Ej: si digo que una persona tiene los pies grandes, las manos grandes y los brazos grandes, puedo resumir este dato diciendo que la persona es alta.</p>
+<p>● Cuando conoces bien los datos, puedes combinar las características originales en nuevas que dejen a las primeras obsoletas.</p>
+<p>Ej: en un conjunto de datos con el peso y altura de varias personas, podemos usar el índice de masa corporal (IMC) para combinar ambas en una y eliminar las anteriores.</p>
+<p>● Hay algoritmos para calcular estas nuevas características de manera que se pierda el mínimo posible de información. El análisis de componentes principales (PCA) permite calcular nuevas características.</p>
 <h2 id="analisis-de-componentes-principales"><strong> Análisis de componentes principales </strong><a class="headerlink" href="#analisis-de-componentes-principales" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -725,48 +831,74 @@
 </li>
 <li>
 <p>Podríamos tener 100 componentes principales para describir conjuntos de 100 características.</p>
+<ul>
+<li>No tendría sentido porque los componentes principales son más difíciles de entender.</li>
+</ul>
 </li>
-</ul>
-<p>■ No tendría sentido porque los componentes principales son más difíciles de entender.</p>
+<li>
+<p>Los componentes principales no contienen información duplicada y están ordenados de más a menos importante.</p>
 <ul>
-<li>Los componentes principales no contienen información duplicada y están ordenados de más a menos importante.</li>
+<li>En conjuntos de datos con mucha correlación, la mayoría de varianza se explica con los primeros componentes.</li>
+<li>El resto de componentes explican tan poca varianza que pueden ser eliminados.</li>
 </ul>
-<p>■ En conjuntos de datos con mucha correlación, la mayoría de varianza se explica con los primeros componentes.
-■ El resto de componentes explican tan poca varianza que pueden ser eliminados.</p>
-<ul>
+</li>
 <li>
 <p>Podemos decirle al algoritmo cuántos componentes queremos que calcule.</p>
 </li>
 <li>
 <p>También podemos decirle la proporción mínima de varianza que queremos mantener.</p>
+<ul>
+<li>El algoritmo decidirá cuántos componentes debe mantener.</li>
+</ul>
+</li>
+<li>
+<p>Problema: no hay nada que nos diga cuál es el número correcto de componentes a mantener.</p>
+<ul>
+<li>Depende de cuánta información estás dispuesto a sacrificar para reducir la complejidad.</li>
+</ul>
 </li>
 </ul>
-<p>■ El algoritmo decidirá cuántos componentes debe mantener
-○ Problema: no hay nada que nos diga cuál es el número correcto de componentes a mantener.</p>
-<p>■ Depende de cuánta información estás dispuesto a sacrificar para reducir la complejidad.
-nooooooooooooooooo</p>
-<h3 id="reemplazar-usando-media-mediana-o-moda"><strong> Reemplazar usando Media, Mediana o Moda </strong><a class="headerlink" href="#reemplazar-usando-media-mediana-o-moda" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;colesterol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="linenos" data-linenos="3 "></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;colesterol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="reemplazar-el-valor-de-las-filas-si-es-necesario"><strong> Reemplazar el valor de las filas si es necesario </strong><a class="headerlink" href="#reemplazar-el-valor-de-las-filas-si-es-necesario" title="Permanent link">&para;</a></h3>
-<p>Para aplicar mecanismos de inteligencia artificial, necesitamos que todos los datos sean numéricos y nos podría interesar modificar los valores de algún campo a numérico. En el caso del ejemplo, queremos cambiar el campo sexo y asignarle un 1 si es hombre y un 0 si es mujer.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">replace</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;sexo&quot;</span><span class="p">:</span><span class="n">replace</span><span class="p">})</span>
-</code></pre></div>
-<h3 id="outliers"><strong> Outliers </strong><a class="headerlink" href="#outliers" title="Permanent link">&para;</a></h3>
-<p>Outlier es cualquier dato que difiere significativamente del promedio o rango observado del resto de nuestros datos. Estos valores se pueden detectar a simple vista revisando todos los datos de la columna o también mediante gráficos.</p>
-<h3 id="datos-categoricos"><strong> Datos categóricos </strong><a class="headerlink" href="#datos-categoricos" title="Permanent link">&para;</a></h3>
-<p>Los datos categóricos toman un número limitado y generalmente fijo de valores posibles. Por ejemplo: género, clase social, tipo de sangre, etc.</p>
-<p>Existen dos tipos de variables categóricas:</p>
+<h2 id="imputacion-y-outliers"><strong> Imputación y Outliers </strong><a class="headerlink" href="#imputacion-y-outliers" title="Permanent link">&para;</a></h2>
+<p>La imputación es como "inventar" para rellenar. En muchas ocasiones es necesario para probar los modelos de machine learning porque sino no funcionan correctamente.
+Hay varias maneras de imputar un valor nulo:</p>
 <ul>
-<li><code>Variables ordinales</code>: sus valores pueden ser ordenados jerárquicamente, como, por ejemplo, el nivel de educación de una persona (sin estudios, primaria, secundaria o superiores).</li>
-<li><code>Variables nominales</code>: no se puede establecer un orden en sus categorías. Algunos ejemplos son el sexo de una persona (hombre o mujer), el color del pelo (castaño, rubio, negro o rojo) o el país de nacimiento (España, Italia, Francia, etc.).</li>
+<li>Imputando por algún valor de tendencia central. El más común es la mediana o la media.</li>
+<li>Imputando con una categoría "unknown". Añadiríamos una categoría más aunque aumentamos la dimensionalidad del problema.</li>
+<li>Imputando un valor conocido. Si conocemos el problema y por qué se genera ese nulo, podemos corregirlo.</li>
+<li>Imputando con algún modelo de Machine Learning. Generamos un modelo que intente predecir el valor de ese nulo en función de los valores de los demás registros que no tienen un nulo en esa posición.</li>
 </ul>
-<p>Realiza los siguientes ejercicios:</p>
-<p><a href="https://colab.research.google.com/drive/19-o5syr1eDLZcbKULJRPjQU4-SMiJ26b?usp=sharing">Limpieza y preparación I</a></p>
-<p><a href="https://colab.research.google.com/drive/1H0yzUSQ5vfp8CUvj4FNw8OtavLCbE1u6?usp=sharing">Limpieza y preparación II</a></p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">IterativeImputer</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">IterativeImputer</span><span class="p">()</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">imputed_df</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_tranform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+Podemos definir los Outliers como:</p>
+<ul>
+<li>
+<p>Atípico</p>
+</li>
+<li>
+<p>Destacado</p>
+</li>
+<li>
+<p>Excepcional</p>
+</li>
+<li>
+<p>Valor extremo, valor anómalo</p>
+</li>
+</ul>
+<p>Los outliers en nuestro dataset serán los valores que se " escapan al rango donde se concentran la mayoría de muestras".</p>
+<ul>
+<li><strong>Error</strong>: si tenemos un grupo de edades de personas y tenemos una persona con 160 años, seguramente sea un error.</li>
+<li><strong>Límites</strong>: podemos tener valores que escapan de la media, pero queremos mantener el dato para que no perjudique al aprendizaje del modelo ML.</li>
+<li><strong>Punto de interés</strong>: casos "anómalos" los que queremos detectar y que sean nuestro objetivo.</li>
+</ul>
+<h2 id="ejercicios-guiados"><strong> Ejercicios guiados: </strong><a class="headerlink" href="#ejercicios-guiados" title="Permanent link">&para;</a></h2>
+<p><a href="https://colab.research.google.com/drive/1MR2xUKkEPUA5eKN8JqKLRsDShsyRpqGI?usp=sharing"> Selección de características </a></p>
+<p><a href="https://colab.research.google.com/drive/1OygM67R5dHWo7-CrKr39RcZsoWia5O7k?usp=sharing"> Extracción de características </a></p>
+<p><a href="https://colab.research.google.com/drive/1rrUuYn6J3BvYUtwluEXidEPiYGfvFzex?usp=sharing"> Imputación </a></p>
+<p><a href="https://colab.research.google.com/drive/1V8L4aXjfVNV-5G1nCn8JZiizaM3Lhhqo?usp=sharing"> Outliers </a></p>
                 
               
               
@@ -782,6 +914,41 @@ nooooooooooooooooo</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="apuntes07.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              3.3. ANÁLISIS EXPLORATORIO DE DATOS (EDA) I
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="apuntes009.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 4.1. GOOGLE COLABORATORY" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              4.1. GOOGLE COLABORATORY
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
