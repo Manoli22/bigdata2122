@@ -537,8 +537,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#componentes-de-un-data-lake" class="md-nav__link">
+    Componentes de un Data Lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ventajas-de-un-data-lake" class="md-nav__link">
     Ventajas de un Data Lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-silos" class="md-nav__link">
+    Data Silos
   </a>
   
 </li>
@@ -553,6 +567,20 @@
           <li class="md-nav__item">
   <a href="#como-se-puede-implementar-un-data-lake" class="md-nav__link">
     ¿Cómo se puede implementar un Data Lake?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plataformas-para-data-lake" class="md-nav__link">
+    Plataformas para Data Lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lakehouse" class="md-nav__link">
+    Data Lakehouse
   </a>
   
 </li>
@@ -609,8 +637,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#componentes-de-un-data-lake" class="md-nav__link">
+    Componentes de un Data Lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ventajas-de-un-data-lake" class="md-nav__link">
     Ventajas de un Data Lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-silos" class="md-nav__link">
+    Data Silos
   </a>
   
 </li>
@@ -625,6 +667,20 @@
           <li class="md-nav__item">
   <a href="#como-se-puede-implementar-un-data-lake" class="md-nav__link">
     ¿Cómo se puede implementar un Data Lake?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plataformas-para-data-lake" class="md-nav__link">
+    Plataformas para Data Lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lakehouse" class="md-nav__link">
+    Data Lakehouse
   </a>
   
 </li>
@@ -650,8 +706,24 @@
                   <h1>7. DATA LAKE</h1>
                 
                 <h2 id="data-lake"><strong>Data Lake</strong><a class="headerlink" href="#data-lake" title="Permanent link">&para;</a></h2>
-<p>Un <strong>data lake o lago de datos</strong> es un <em>repositorio centralizado</em> que permite almacenar, compartir, gobernar y descubrir todos los datos estructurados y no estructurados de una organización a cualquier escala. Es el lugar en el que se vuelcan los datos en bruto.</p>
-<p>Los data lakes no requieren un esquema predefinido, se pueden almacenar y procesar datos sin esquema y en cualquier formato sin la necesidad de conocer cómo se van a explotar en el futuro. Esta característica evita que sean necesarios complejos procesos ETL (Extracción, Transformación y Carga) de limpieza y preparación.</p>
+<p>Un <strong>data lake o lago de datos</strong> es un <em>repositorio centralizado</em> que permite almacenar, compartir, gobernar y descubrir todos los datos estructurados y no estructurados de una organización a cualquier escala. </p>
+<ul>
+<li>
+<p>Los datos provienen de múltiples <strong>fuentes de datos variadas</strong>.</p>
+</li>
+<li>
+<p>Los datos se guardan en su <strong>formato original</strong>, sin formatear ni procesar.</p>
+</li>
+<li>
+<p>Los datos se organizan en <strong>carpetas</strong>, con diferentes niveles de acceso y tratamiento de la información.</p>
+</li>
+<li>
+<p>Los datos son extraídos, cargados y transformados sólo cuando son necesarios, mediante <strong>procesos ELT</strong>.</p>
+</li>
+<li>
+<p>Se recomienda guardar los datos en formato <strong>Parquet</strong> a excepción de la capa Raw.</p>
+</li>
+</ul>
 <p><img alt="imagen" src="imagenes/lake1.PNG" /></p>
 <h3 id="data-lake-vs-data-warehouse"><strong> Data Lake VS Data Warehouse </strong><a class="headerlink" href="#data-lake-vs-data-warehouse" title="Permanent link">&para;</a></h3>
 <ul>
@@ -664,20 +736,37 @@
 <li>
 <p>En cuanto al procesamiento de datos, los Data Lakes suelen necesitar un servicio separado como Spark. Los Data Warehouses aportan este servicio de procesamiento.</p>
 </li>
-<li></li>
 </ul>
 <p><img alt="imagen" src="imagenes/lake2.PNG" /></p>
+<h3 id="componentes-de-un-data-lake"><strong> Componentes de un Data Lake </strong><a class="headerlink" href="#componentes-de-un-data-lake" title="Permanent link">&para;</a></h3>
+<p><img alt="imagen" src="imagenes/lake4.PNG" /></p>
+<ol>
+<li>
+<p><strong>Ingesta de datos</strong>: Un sistema de capas de ingesta fácilmente escalable que extrae datos de fuentes diversas, incluidas páginas web, aplicaciones móviles, redes sociales, dispositivos IoT y sistemas de gestión de datos existentes. Debe ser flexible para ejecutarse en diferentes modos (por lotes (batch), de una única vez o en tiempo real) y admitir cualquier tipo de datos y fuentes de datos nuevas.</p>
+</li>
+<li>
+<p><strong>Almacenamiento de datos</strong>: Un sistema de almacenamiento de datos debe ser capaz de almacenar y tratar datos sin procesar, así como soportar sistemas de cifrado y compresión manteniendo su eficiencia en términos de costes.</p>
+</li>
+<li>
+<p><strong>Seguridad en los datos</strong>: Deben ofrecer máxima seguridad, utilizando sistemas de autenticación y autorización, así como niveles de acceso basado en roles, protección de datos, etc.</p>
+</li>
+<li>
+<p><strong>Análisis de datos</strong>: Una vez realizada la ingesta, los datos deben poder ser analizados de manera ágil y eficiente utilizando herramientas de análisis de datos y aprendizaje automático para extraer información relevante y transferir los datos examinados a un almacén de datos.</p>
+</li>
+<li>
+<p><strong>Gobierno de datos</strong>: El proceso de ingesta, preparación, catalogación, integración y aceleración de consultas de datos debe simplificarse en su totalidad para garantizar un nivel de calidad de los datos para uso empresarial.</p>
+</li>
+</ol>
 <h3 id="ventajas-de-un-data-lake"><strong> Ventajas de un Data Lake </strong><a class="headerlink" href="#ventajas-de-un-data-lake" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Data Lake ofrece a los usuarios comerciales acceso inmediato a todos los datos.</p>
 </li>
 <li>
-<p>Los Data Lake no se limitan a relacionales o transaccionales
-Con un Data Lake, nunca necesitará mover los datos.</p>
+<p>Los Data Lake no se limitan a relacionales o transaccionales.</p>
 </li>
 <li>
-<p>Data Lake empodera a los usuarios empresariales y los libera de los lazos del dominio de TI.</p>
+<p>Con un Data Lake, nunca necesitará mover los datos.</p>
 </li>
 <li>
 <p>Data Lake acelera la entrega al permitir que las unidades de negocios pongan en marcha las aplicaciones rápidamente.</p>
@@ -701,13 +790,16 @@ Con un Data Lake, nunca necesitará mover los datos.</p>
 <p>Rápidamente adaptable a los cambios.</p>
 </li>
 <li>
-<p>La principal ventaja del lago de datos es la centralización de diferentes fuentes de contenido. </p>
+<p>La principal ventaja del Data Lake es la centralización de diferentes fuentes de contenido. </p>
 </li>
 <li>
 <p>Los usuarios, de varios departamentos, pueden estar dispersos por todo el mundo y pueden tener acceso flexible a los datos.</p>
 </li>
 </ul>
 <p><img alt="imagen" src="imagenes/lake3.PNG" /></p>
+<h3 id="data-silos"><strong> Data Silos </strong><a class="headerlink" href="#data-silos" title="Permanent link">&para;</a></h3>
+<p>Los silos de datos ocurren cuando no existe un lugar o un sistema centralizado en el que almacenar todos los datos de la organización. Un silo, por tanto, hace más complicado descubrir nuevos datos, ya que cada uno de ellos está controlado por un departamento independiente, con diferentes políticas e incluso tecnologías.</p>
+<p>La razón principal para la creación de data lakes en las compañías es evitar los silos de datos, que suelen producirse a causa de un crecimiento rápido y poco controlado.</p>
 <h3 id="estructura-de-un-data-lake-zonas"><strong> Estructura de un Data Lake - Zonas </strong><a class="headerlink" href="#estructura-de-un-data-lake-zonas" title="Permanent link">&para;</a></h3>
 <p>No existe un modelo único de como estructurar un Data Lake, cada organización tendrá su propio conjunto de requisitos únicos. Un enfoque simple puede ser comenzar con algunas zonas genéricas (o capas).</p>
 <ul>
@@ -717,19 +809,25 @@ Con un Data Lake, nunca necesitará mover los datos.</p>
 <ul>
 <li><strong>Cleansed / Silver</strong></li>
 </ul>
-<p>La siguiente capa se puede considerar como una zona de filtración que elimina las impurezas, pero también puede implicar un enriquecimiento.
-Las actividades típicas que se encuentran en esta capa son la definición de esquemas y tipos de datos, la eliminación de columnas innecesarias y la aplicación de reglas de limpieza.
-La organización de esta zona suele estar más impulsada por el negocio que por el sistema de origen; por lo general, podría ser una carpeta por proyecto. Algunos pueden considerar esta capa como una zona de prueba. Si los analistas de datos o los científicos necesitan acceder a los datos en esta capa, se les podría otorgar acceso de solo lectura.</p>
+<p>La siguiente capa se puede considerar como una zona de filtración que elimina las impurezas, pero también puede implicar un enriquecimiento.</p>
+<p>Las actividades típicas que se encuentran en esta capa son la definición de esquemas y tipos de datos, la eliminación de columnas innecesarias y la aplicación de reglas de limpieza.</p>
+<p>La organización de esta zona suele estar más impulsada por el negocio que por el sistema de origen; por lo general, podría ser una carpeta por proyecto. Algunos pueden considerar esta capa como una zona de prueba. Si los analistas de datos o los científicos necesitan acceder a los datos en esta capa, se les podría otorgar acceso de solo lectura.</p>
 <ul>
 <li><strong>Curated / Gold</strong></li>
 </ul>
-<p>Esta es la capa de consumo, que está optimizada para análisis en lugar de ingesta o procesamiento de datos. Puede almacenar datos en data marts desnormalizados o esquemas en estrella. El modelado dimensional se realiza preferiblemente utilizando herramientas como Spark o Data Factory. Esta capa puede considerarse como la única fuente de verdad. Sin embargo, no espere que esta capa sustituya a un data warehouse. Por lo general, el rendimiento no es adecuado para dashboards o análisis interactivos. Es más adecuado para analistas internos o científicos de datos que desean ejecutar consultas ad hoc a gran escala, análisis o analíticas avanzadas que no tienen necesidades estrictas de informes urgentes. 
-Como los costos de almacenamiento son más bajos en el DL que en el DW, puede ser más rentable mantener datos granulares y de bajo nivel en el DL y almacenar solo datos agregados en el DW. Los activos de datos en esta zona suelen estar muy bien gobernados y bien documentados. El permiso generalmente se asigna por departamento o función y se organiza por grupo de consumidores o por data mart.</p>
+<p>Esta es la capa de consumo, que está optimizada para análisis en lugar de ingesta o procesamiento de datos. Puede almacenar datos en data marts desnormalizados o esquemas en estrella. </p>
+<p>El modelado dimensional se realiza preferiblemente utilizando herramientas como Spark o Data Factory. Esta capa puede considerarse como la única fuente de verdad. Sin embargo, no espere que esta capa sustituya a un data warehouse. </p>
+<p>Por lo general, el rendimiento no es adecuado para dashboards o análisis interactivos. Es más adecuado para analistas internos o científicos de datos que desean ejecutar consultas ad hoc a gran escala, análisis o analíticas avanzadas que no tienen necesidades estrictas de informes urgentes.</p>
+<p>Como los costos de almacenamiento son más bajos en el DL que en el DW, puede ser más rentable mantener datos granulares y de bajo nivel en el DL y almacenar solo datos agregados en el DW. 
+Los activos de datos en esta zona suelen estar muy bien gobernados y bien documentados. El permiso generalmente se asigna por departamento o función y se organiza por grupo de consumidores o por data mart.</p>
+<p><img alt="imagen" src="imagenes/lake5.PNG" /></p>
 <ul>
 <li><strong>Laboratory</strong></li>
 </ul>
-<p>Esta es la capa donde ocurre la exploración y la experimentación. Aquí, los científicos, ingenieros y analistas de datos son libres de crear prototipos e innovar, combinando sus propios conjuntos de datos. Esto es similar a la noción de análisis self-service que es útil durante la evaluación inicial. Esta zona no sustituye a un DL de prueba o desarrollo, que sigue siendo necesario para actividades de desarrollo más rigurosas que siguen un ciclo de vida de desarrollo de software típico.
+<p>Esta es la capa donde ocurre la exploración y la experimentación. Aquí, los científicos, ingenieros y analistas de datos son libres de crear prototipos e innovar, combinando sus propios conjuntos de datos. Esto es similar a la noción de análisis self-service que es útil durante la evaluación inicial. </p>
+<p>Esta zona no sustituye a un DL de prueba o desarrollo, que sigue siendo necesario para actividades de desarrollo más rigurosas que siguen un ciclo de vida de desarrollo de software típico.
 Cada usuario, equipo o proyecto del DL tendrá su propia área de laboratorio a través de una carpeta, donde podrá prototipar nuevos conocimientos o análisis, antes de que se acuerde formalizarlos y operacionalizarlos a través de jobs automatizados. Los permisos en esta zona suelen ser de lectura y escritura por usuario, equipo o proyecto.</p>
+<p><img alt="imagen" src="imagenes/lake6.PNG" /></p>
 <h3 id="como-se-puede-implementar-un-data-lake"><strong> ¿Cómo se puede implementar un Data Lake? </strong><a class="headerlink" href="#como-se-puede-implementar-un-data-lake" title="Permanent link">&para;</a></h3>
 <p>Un Data Lake se puede implementar de dos maneras:</p>
 <ul>
@@ -740,6 +838,56 @@ Cada usuario, equipo o proyecto del DL tendrá su propia área de laboratorio a 
 <p><strong>Data Lake Cloud</strong>: tiene la ventaja de que se disminuyen los tiempos de configuración y adminitración. Sin embargo, antes de contratar este servicio, es recomendable definir cuántos datos vamos a almacenar y su tasa de crecimiento estimada. Esto nos permitirá organizar de mejor manera el aumento del tamaño y como consecuencia prevenir el quedar cortos en algún punto de los proyectos.</p>
 </li>
 </ul>
+<h3 id="plataformas-para-data-lake"><strong> Plataformas para Data Lake </strong><a class="headerlink" href="#plataformas-para-data-lake" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>AWS Data Lake:</p>
+<ul>
+<li>Amazon S3</li>
+<li>Amazon Redshift</li>
+<li>AWS Glue</li>
+</ul>
+</li>
+<li>
+<p>Azure Data Lake:</p>
+<ul>
+<li>ADLS (Azure Data Lake Storage)</li>
+<li>HDInsight (Hadoop/Spark/Kafka)</li>
+<li>Azure Data Factory</li>
+</ul>
+</li>
+<li>
+<p>Cloudera Data Lake:</p>
+<ul>
+<li>Tecnologías Hadoop y oopen source</li>
+<li>HDFS</li>
+<li>CDP (Cloudera Data Platform)</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-lakehouse"><strong> Data Lakehouse </strong><a class="headerlink" href="#data-lakehouse" title="Permanent link">&para;</a></h3>
+<p>Une los dos conceptos, Data Warehouse y Data Lake.</p>
+<ul>
+<li>
+<p>Los dato se almacenan en un sistema de almacenamiento único (estructurados, semiestructurados y no estructurados), de bajo coste.</p>
+</li>
+<li>
+<p>El Data Lakehouse se organiza por capas con diferentes niveles de madurez del dato, habitualmente hablamos de Raw, Silver y Gold.</p>
+</li>
+<li>
+<p>Los datos se comienzan almacenando en su formato original, capa RAW, sin formatear ni procesar.</p>
+</li>
+<li>
+<p>Posteriormente se convierten a formato Delta Lake o Parquet realizando las trasformaciones necesarias para almacenarlos en cada una de las capas restantes.</p>
+</li>
+<li>
+<p>Suelen comenzar como data lakes que contienen todo tipo de dato, luego se convierten al formato <strong>Delta Lake</strong>, que permiten procesos transaccionales ACID (atomicidad, consistencia, aislamiento y durabilidad) desde almacenes de datos tradicionales.</p>
+</li>
+<li>
+<p>Un Data Lakehouse tiene como objetivo mejorar la eficiencia mediante la construcción de un data warehouse con tecnología de data lake.</p>
+</li>
+</ul>
+<p><img alt="imagen" src="imagenes/lake8.PNG" /></p>
                 
               
               
